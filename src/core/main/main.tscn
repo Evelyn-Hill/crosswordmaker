@@ -20,10 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CrosswordGrid" parent="." instance=ExtResource("1_6t2ow")]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 117.0
 offset_right = 120.0
 offset_bottom = 117.0
 
 [node name="CrosswordEditorPanel" parent="." instance=ExtResource("2_eijcj")]
+custom_minimum_size = Vector2(300, 1080)
 layout_mode = 1

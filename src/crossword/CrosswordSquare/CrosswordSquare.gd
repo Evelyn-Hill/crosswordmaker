@@ -6,12 +6,17 @@ var _square_width: int = 2
 var _rect_color: Color = Color.BLACK
 var _crossword_grid: CrosswordGrid
 
+enum Decorators {
+	NONE,
+	CIRCLE,
+}
+
 # Public
 var filled: bool = false
 var square_number: int = -1
 var grid_position: Vector2i
-
 var is_clicked: bool = false
+var decorator: Decorators = Decorators.NONE
 
 func _ready() -> void:
 	%SquareNumber.text = str(square_number)
@@ -20,7 +25,17 @@ func _ready() -> void:
 	
 func _draw() -> void:
 	var rect: Rect2 = Rect2(Vector2.ZERO, self.size)
-	draw_rect(rect, _rect_color, filled, _square_width)
+	
+	# the width argument has no effect if the rect is filled.
+	if filled:
+		draw_rect(rect, _rect_color, filled)
+	else:
+		draw_rect(rect, _rect_color, filled, _square_width)
+	
+	if decorator == Decorators.CIRCLE:
+		draw_circle(self.size * 0.5, 20.0, Color.BLACK, false)
+
+
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -50,3 +65,8 @@ func set_filled_state(filled_state: bool) -> void:
 		sym_square.set_filled_state(filled_state)	
 	
 	queue_redraw()
+
+func set_decorator(d: Decorators) -> void:
+	decorator = d
+	queue_redraw()
+
