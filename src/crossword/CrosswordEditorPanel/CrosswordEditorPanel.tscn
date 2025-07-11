@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://cteea6ya0frlg"]
+
+[ext_resource type="Script" uid="uid://bd6eou88m0om0" path="res://src/crossword/CrosswordEditorPanel/CrosswordEditorPanel.gd" id="1_xp0ij"]
+
+[node name="CrosswordEditorPanel" type="Control"]
+custom_minimum_size = Vector2(600, 1080)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_xp0ij")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Square Editor"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MetaData" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MetaData"
+horizontal_alignment = 1
+
+[node name="GridPositionLabels" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridPositionLabels"]
+layout_mode = 2
+text = "Grid Position:"
+
+[node name="GridPositionValue" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridPositionLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SquareNumberLabels" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/SquareNumberLabels"]
+layout_mode = 2
+text = "Square Number:"
+
+[node name="SquareNumberValue" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/SquareNumberLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SquareOptions" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Square Options"
+horizontal_alignment = 1
+
+[node name="BlockedToggle" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/BlockedToggle"]
+layout_mode = 2
+text = "Blocked: "
+
+[node name="BlockedToggleButton" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/BlockedToggle"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Decorator" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Decorator"]
+layout_mode = 2
+text = "Decorator: "
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Decorator"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 2
+popup/item_1/text = "Circle"
+popup/item_1/id = 0
+popup/item_2/text = "Star"
+popup/item_2/id = 1

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsdr4h8p067ns"]
+
+[ext_resource type="PackedScene" uid="uid://bkq8raukb5mss" path="res://src/crossword/CrosswordGrid/CrosswordGrid.tscn" id="1_6t2ow"]
+[ext_resource type="PackedScene" uid="uid://cteea6ya0frlg" path="res://src/crossword/CrosswordEditorPanel/CrosswordEditorPanel.tscn" id="2_eijcj"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosswordGrid" parent="." instance=ExtResource("1_6t2ow")]
+offset_left = 120.0
+offset_top = 117.0
+offset_right = 120.0
+offset_bottom = 117.0
+
+[node name="CrosswordEditorPanel" parent="." instance=ExtResource("2_eijcj")]
+layout_mode = 1

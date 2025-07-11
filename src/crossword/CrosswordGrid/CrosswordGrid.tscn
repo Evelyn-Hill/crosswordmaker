@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkq8raukb5mss"]
+
+[ext_resource type="Script" uid="uid://der5ov5mlrubi" path="res://src/crossword/CrosswordGrid/CrosswordGrid.gd" id="1_lq1xr"]
+
+[node name="CrosswordGrid" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_lq1xr")
