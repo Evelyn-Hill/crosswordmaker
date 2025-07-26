@@ -7,6 +7,7 @@ func _ready() -> void:
 	
 	%BlockedToggleButton.toggled.connect(_handle_blocked_toggled)
 	%DecoratorOption.item_selected.connect(_handle_decorator_set)
+	%SaveButton.pressed.connect(_handle_save_button_pressed)
 	pass # Replace with function body.
 	
 func _handle_square_clicked(square: CrosswordSquare) -> void:
@@ -28,3 +29,7 @@ func _handle_decorator_set(index: int) -> void:
 	if index == 0: current_square.set_decorator(CrosswordSquare.Decorators.NONE)
 
 	if index == 1: current_square.set_decorator(CrosswordSquare.Decorators.CIRCLE)
+
+
+func _handle_save_button_pressed() -> void:
+	SignalBus.emit_save_requested()
