@@ -21,7 +21,6 @@ var letter_data: String = ""
 
 
 func _ready() -> void:
-	%SquareNumber.text = str(square_number)
 	self.text_changed.connect(_handle_text_changed)
 	self.gui_input.connect(_on_gui_input)
 	SignalBus.square_clicked.connect(_on_square_clicked)
@@ -62,6 +61,9 @@ func set_clicked_state(clicked_state: bool) -> void:
 
 func set_filled_state(filled_state: bool) -> void:
 	filled = filled_state
+	if filled:
+		%SquareNumber.text = ""
+		square_number = -1
 
 	if filled:
 		text = ""
@@ -70,7 +72,10 @@ func set_filled_state(filled_state: bool) -> void:
 	var sym_square: CrosswordSquare = _crossword_grid.get_square_by_grid_position(Vector2i((_crossword_grid.grid_size.x - 1) - grid_position.x, (_crossword_grid.grid_size.y - 1) - grid_position.y))
 	if sym_square.filled != filled_state:
 		sym_square.set_filled_state(filled_state)	
-	
+
+	# This eventually triggers the square numbers to recalculate
+	# at the crossword grid level.
+	SignalBus.emit_square_filled(self)
 	queue_redraw()
 
 func set_decorator(d: Decorators) -> void:
@@ -88,3 +93,7 @@ func _handle_text_changed(new_text: String) -> void:
 		add_theme_font_size_override("font_size", 13)
 	else:
 		add_theme_font_size_override("font_size", 15)
+
+func set_number(number: int) -> void:
+	square_number = number	
+	%SquareNumber.text = str(square_number)
